@@ -1,7 +1,7 @@
 # Model arguments
 model_name_or_path: Qwen/Qwen2.5-7B-Instruct
 model_revision: main
-tokenizer_name_or_path: Qwen/Qwen2.5-7B-Instruct
+# tokenizer_name_or_path: Qwen/Qwen2.5-7B-Instruct
 torch_dtype: bfloat16
 attn_implementation: flash_attention_2
 
