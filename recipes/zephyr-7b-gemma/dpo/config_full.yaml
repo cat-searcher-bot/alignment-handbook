@@ -10,7 +10,6 @@ dataset_splits:
 - train
 - test
 preprocessing_num_workers: 12
-dataset_text_field: text 
 
 # DPOTrainer arguments
 bf16: true
@@ -41,4 +40,3 @@ report_to:
 save_strategy: "no"
 seed: 42
 warmup_ratio: 0.1
-packing: true
