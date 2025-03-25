@@ -9,8 +9,7 @@ attn_implementation: flash_attention_2
 dataset_mixer:
   cat-searcher/owl-sft-dataset: 1.0
 dataset_splits:
-- train_sft
-- test_sft
+- train
 preprocessing_num_workers: 12
 dataset_text_field: text 
 
@@ -19,7 +18,7 @@ bf16: true
 dataset_kwargs:
   add_special_tokens: false  # We already wrap <bos> and <eos> in the chat template
   append_concat_token: false # No need to add <eos> across samples
-do_eval: true
+do_eval: false
 eval_strategy: epoch
 gradient_accumulation_steps: 4
 gradient_checkpointing: true
