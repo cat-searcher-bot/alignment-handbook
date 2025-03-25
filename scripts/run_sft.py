@@ -24,7 +24,12 @@ import sys
 import datasets
 import torch
 import transformers
-from transformers import AutoModelForCausalLM, set_seed
+from transformers import (
+    AutoModelForCausalLM, 
+    set_seed,
+    AutoModelForVision2Seq,
+    Qwen2VLForConditionalGeneration,
+)
 
 from alignment import (
     DataArguments,
@@ -121,10 +126,20 @@ def main():
     )
 
     # model = model_args.model_name_or_path
-    model = AutoModelForCausalLM.from_pretrained(
-        model_args.model_name_or_path, 
-        **model_kwargs
-    )
+    # model = AutoModelForCausalLM.from_pretrained(
+    #     model_args.model_name_or_path, 
+    #     **model_kwargs
+    # )
+    if "qwen" in model_args.model_name_or_path.lower() and "vl" in model_args.model_name_or_path.lower():
+        model = Qwen2VLForConditionalGeneration.from_pretrained(
+            model_args.model_name_or_path,
+            **model_kwargs
+        )
+    else:
+        model = AutoModelForCausalLM.from_pretrained(
+            model_args.model_name_or_path, 
+            **model_kwargs
+        )
 
     # For ChatML we need to add special tokens and resize the embedding layer
     if "<|im_start|>" in tokenizer.chat_template and "gemma-tokenizer-chatml" not in tokenizer.name_or_path:
