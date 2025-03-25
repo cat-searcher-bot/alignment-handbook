@@ -51,4 +51,4 @@ hub_strategy: checkpoint
 
 # Eval settings
 # do_eval: false
-eval_strategy: no
+eval_strategy: "no"
