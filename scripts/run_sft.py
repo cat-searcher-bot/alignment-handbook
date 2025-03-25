@@ -158,10 +158,14 @@ def main():
     )
 
     train_dataset = raw_datasets["train"]
-    if training_args.do_eval:
+    eval_dataset = None
+
+    if training_args.do_eval and "test" in raw_datasets:
         eval_dataset = raw_datasets["test"]
-    else:
-        eval_dataset = None
+    elif training_args.do_eval:
+        logger.warning("Evaluation is enabled, but no 'test' split was found. Disabling evaluation.")
+        training_args.do_eval = False
+
 
     with training_args.main_process_first(desc="Log a few random samples from the processed training set"):
         for index in random.sample(range(len(raw_datasets["train"])), 3):
