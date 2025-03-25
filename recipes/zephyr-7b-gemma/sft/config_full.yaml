@@ -18,8 +18,6 @@ bf16: true
 dataset_kwargs:
   add_special_tokens: false  # We already wrap <bos> and <eos> in the chat template
   append_concat_token: false # No need to add <eos> across samples
-do_eval: false
-eval_strategy: epoch
 gradient_accumulation_steps: 4
 gradient_checkpointing: true
 gradient_checkpointing_kwargs:
@@ -50,3 +48,7 @@ hub_private_repo: true
 hub_model_id: cat-searcher/qwen-test 
 output_dir: checkpoints/qwen-test
 hub_strategy: checkpoint
+
+# Eval settings
+do_eval: false
+eval_strategy: no
