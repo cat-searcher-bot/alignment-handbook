@@ -120,7 +120,12 @@ def main():
         quantization_config=quantization_config,
     )
 
-    model = model_args.model_name_or_path
+    # model = model_args.model_name_or_path
+    model = AutoModelForCausalLM.from_pretrained(
+        model_args.model_name_or_path, 
+        **model_kwargs
+    )
+
     # For ChatML we need to add special tokens and resize the embedding layer
     if "<|im_start|>" in tokenizer.chat_template and "gemma-tokenizer-chatml" not in tokenizer.name_or_path:
         model = AutoModelForCausalLM.from_pretrained(model_args.model_name_or_path, **model_kwargs)
@@ -164,16 +169,10 @@ def main():
     ########################
     trainer = SFTTrainer(
         model=model,
-        model_init_kwargs=model_kwargs,
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
-        dataset_text_field="text",
-        max_seq_length=training_args.max_seq_length,
-        tokenizer=tokenizer,
-        packing=True,
         peft_config=get_peft_config(model_args),
-        dataset_kwargs=training_args.dataset_kwargs,
     )
 
     ###############
