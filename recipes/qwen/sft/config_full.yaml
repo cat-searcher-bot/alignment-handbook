@@ -27,7 +27,7 @@ log_level: info
 logging_steps: 5
 logging_strategy: steps
 lr_scheduler_type: cosine
-max_length: 64000
+max_length: 32000
 max_steps: -1
 num_train_epochs: 3
 overwrite_output_dir: true
