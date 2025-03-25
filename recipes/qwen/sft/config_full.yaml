@@ -1,7 +1,7 @@
 # Model arguments
-model_name_or_path: google/gemma-7b
+model_name_or_path: Qwen/Qwen2.5-VL-7B-Instruct
 model_revision: main
-tokenizer_name_or_path: philschmid/gemma-tokenizer-chatml # Custom tokenizer with <|im_start|> and <|im_end|> tokens
+tokenizer_name_or_path: Qwen/Qwen2.5-VL-7B-Instruct
 torch_dtype: bfloat16
 attn_implementation: flash_attention_2
 
