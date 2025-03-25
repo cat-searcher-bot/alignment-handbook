@@ -1,14 +1,7 @@
 # Model arguments
-model_name_or_path: Qwen/Qwen2.5-VL-7B-Instruct
+model_name_or_path: Qwen/Qwen2.5-7B-Instruct
 model_revision: main
-tokenizer_name_or_path: Qwen/Qwen2.5-VL-7B-Instruct
-torch_dtype: bfloat16
-attn_implementation: flash_attention_2
-
-# Model arguments
-model_name_or_path: Qwen/Qwen2.5-VL-7B-Instruct
-model_revision: main
-tokenizer_name_or_path: Qwen/Qwen2.5-VL-7B-Instruct
+tokenizer_name_or_path: Qwen/Qwen2.5-7B-Instruct
 torch_dtype: bfloat16
 attn_implementation: flash_attention_2
 
@@ -34,7 +27,7 @@ log_level: info
 logging_steps: 5
 logging_strategy: steps
 lr_scheduler_type: cosine
-max_length: 32000
+max_length: 64000
 max_steps: -1
 num_train_epochs: 3
 overwrite_output_dir: true
